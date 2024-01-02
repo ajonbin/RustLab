@@ -1,0 +1,17 @@
+[package]
+name = "hello_pkg"
+version = "0.1.0"
+edition = "2021"
+default-run = "minus"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+
+[lib]
+name = "simplemathlib"
+path = "src/simplemathlib/lib.rs"
+
+[[bin]]
+name = "minus"
+path = "src/minus.rs"

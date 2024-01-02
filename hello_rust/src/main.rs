@@ -168,4 +168,34 @@ fn main() {
     //                 ^^ value borrowed here after move
     println!("{:?}", b2);
   }
+
+  println!("==== Reference and DeReference ====");
+  {
+    #[derive(Debug)]
+    struct Thing;
+
+    let t1: Thing = Thing;
+    let t2: &Thing = &t1;
+    //let t3: Thing = *t2;
+    //                ^^^
+    //                |
+    //                 move occurs because `*t2` has type `Thing`, which does not implement the `Copy` trait
+
+    let tn1: Box<Thing> = Box::new(Thing);
+    println!("{:?}", tn1);
+    println!("{:?}", *tn1);
+
+    //type_of tn1 is "alloc::boxed::Box<hello_rust::main::Thing>"
+    println!("type_of tn1 is {:?}",type_of(&tn1));
+
+    //type_of *tn1 is "hello_rust::main::Thing"
+    println!("type_of *tn1 is {:?}",type_of(&*tn1));
+
+    //borrow of moved value: `tn1`.
+    let tn2: Thing = *tn1;
+    //println!("{:?}", tn1);
+    //                 ^^^ value borrowed here after move
+
+  }
+
 }
