@@ -34,10 +34,10 @@ async fn slideshow(params: web::Query<SlideshowParams>) -> HttpResponse {
     for file in &media_files {
         if file.ends_with(".mp4") || file.ends_with(".webm") || file.ends_with(".ogg") || file.ends_with(".avi") {
             // If the file is a video, create a video element
-						html.push_str(&format!(
-    					r#"<video src="/{}" style="display: none; width: 100%; height: 100%; object-fit: contain;" muted autoplay onended="nextMedia()"></video>"#,
-    					file
-						));
+            html.push_str(&format!(
+                r#"<video src="/{}" style="display: none; width: 100%; height: 100%; object-fit: contain;" muted autoplay onended="nextMedia()"></video>"#,
+                file
+            ));
         } else {
             // If the file is an image, create an image element
             html.push_str(&format!(
