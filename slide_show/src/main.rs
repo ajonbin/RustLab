@@ -100,7 +100,7 @@ async fn slideshow(params: web::Query<SlideshowParams>) -> HttpResponse {
 
     HttpResponse::Ok()
         .content_type("text/html")
-        .body(format!("<div style='position: relative; width: 100vw; height: 100vh;'>{}</div>{}", html, js))
+        .body(format!("<div style='position: relative;'>{}</div>{}", html, js))
 }
 
 fn get_video_duration(file_path: &str) -> Duration {
